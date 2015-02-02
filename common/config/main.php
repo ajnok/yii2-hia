@@ -13,5 +13,8 @@ return [
             'enableUnconfirmedLogin' => true,
             'admins' => 'ajnok',
         ],
+        'location' => [
+            'class' => 'backend\modules\location\Location',
+        ],
     ],
 ];
