@@ -1,9 +1,7 @@
 <?php
+
 $params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
 );
 
 return [
@@ -11,6 +9,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'language' => 'th-TH',
 //    'modules' => [],
     'components' => [
 //        'user' => [
@@ -28,6 +27,17 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'i18n' => [
+            'translations' => [
+                'hia*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'fileMap' => [
+                        'hia' => 'hia.php',
+                        'hia/error' => 'hia.error',
+                    ],
+                ],
+            ],
         ],
     ],
     'params' => $params,

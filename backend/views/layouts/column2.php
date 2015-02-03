@@ -64,9 +64,12 @@ AppAsset::register($this);
                 ?>
                 <div class="row">
                     <div id="content" class="col-lg-9 col-lg-push-3">
-                        <?= $content ?>
-
-
+                        <div class="site-index">
+                            <div class="body-content">
+                                <?= $content ?>
+                            </div>
+                        </div>
+                        
                     </div>
                     <div id="leftbar" class="col-lg-3 col-lg-pull-9">
                         <?php
@@ -76,83 +79,18 @@ AppAsset::register($this);
 //                            var_dump($item);
                             if (strlen($item)==0) {
                                 $item = "site/index";
-                                
                             }
-                            
                             echo SideNav::widget([
                                'type' => $type,
                                 'encodeLabels' => false,
                                 'heading' => $heading,
                                 'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> 2';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> ข้อมูลระบบ';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> ข้อมูลระบบ';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
+                                    ['label' => 'หน้าแรก', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
+                                    ['label' => 'ภูมิภาค/จังหวัด/อำเภอ/ตำบล', 'url' => ['/location'],'active' => ($item == 'location')],
                                 ],
                             ]);
                         ?>
                     </div> 
-
-
-
                 </div>
             </div>
         </div>
