@@ -169,13 +169,6 @@ CREATE TABLE IF NOT EXISTS `token` (
   `type` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `token`
---
-
-INSERT INTO `token` (`user_id`, `code`, `created_at`, `type`) VALUES
-(1, '46d4QvM-a-9YKZB7Q1Slm4THBb2oYik5', 1422891494, 0);
-
 -- --------------------------------------------------------
 
 --
