@@ -27,20 +27,23 @@ AppAsset::register($this);
         <div class="wrap">
             <?php
             NavBar::begin([
-                'brandLabel' => 'My Company',
+//                'brandLabel' => 'My Company',
+//                'brandUrl' => Yii::$app->homeUrl,
+                'brandLabel' => Yii::t('hia', Yii::$app->params['brandLabel']).' - '.Yii::t('hia',
+                    strtoupper(Yii::$app->id)),
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
             $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => Yii::t('hia','Home'), 'url' => ['/site/index']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
             } else {
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'label' => Yii::t('hia','Logout') . ' (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
@@ -85,70 +88,11 @@ AppAsset::register($this);
                                 'heading' => $heading,
                                 'items' => [
                                     ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
+                                    ['label' => 'ภูมิภาค/อำเภอ/จังหวัด/ตำบล','icon' => 'home', 'url' => ['/location'],'active' => ($item == 'location' || $item == '')],
                                 ],
                             ]);
                         ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> 2';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> ข้อมูลระบบ';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> ข้อมูลระบบ';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
-                                $item = "site/index";
-                                
-                            }
-                            
-                            echo SideNav::widget([
-                               'type' => $type,
-                                'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก','icon' => 'home', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'gii','icon' => 'home', 'url' => ['gii/default/index'],'active' => ($item == 'gii/default/index')],
-                                ],
-                            ]);
-                        ?>
+                        
                     </div> 
 
 
