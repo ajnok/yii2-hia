@@ -8,6 +8,7 @@ use backend\modules\location\models\Province;
 use backend\modules\location\models\District;
 use backend\modules\location\models\Subdistrict;
 
+
 class DefaultController extends Controller
 {
     public function actions()
@@ -31,5 +32,7 @@ class DefaultController extends Controller
             'district' => $district,
             'subdistrict' => $subdistrict,
         ]);
+//        $this->layout='main';
+        return $this->render('index');
     }
 }
