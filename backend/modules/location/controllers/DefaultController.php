@@ -32,7 +32,5 @@ class DefaultController extends Controller
             'district' => $district,
             'subdistrict' => $subdistrict,
         ]);
-//        $this->layout='main';
-        return $this->render('index');
     }
 }

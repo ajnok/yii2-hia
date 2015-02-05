@@ -33,7 +33,7 @@ class Region extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['bot_code', 'name'], 'required'],
+            [['bot_code', 'name'], 'required','on' => ['create','update']],
             [['dt_create', 'ts_update'], 'safe'],
             [['bot_code', 'dopa_code'], 'string', 'max' => 6],
             [['name'], 'string', 'max' => 20],

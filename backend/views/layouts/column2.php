@@ -28,8 +28,8 @@ AppAsset::register($this);
             <?php
             NavBar::begin([
                 'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
+                'brandUrl'   => Yii::$app->homeUrl,
+                'options'    => [
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
@@ -40,18 +40,18 @@ AppAsset::register($this);
                 $menuItems[] = ['label' => 'Login', 'url' => ['/user/security/login']];
             } else {
                 $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
+                    'label'       => 'Logout ('.Yii::$app->user->identity->username.')',
+                    'url'         => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
                 $menuItems[] = [
                     'label' => 'Gii',
-                    'url' => ['/gii'],
+                    'url'   => ['/gii'],
                 ];
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $menuItems,
+                'items'   => $menuItems,
             ]);
             NavBar::end();
             ?>
@@ -59,37 +59,46 @@ AppAsset::register($this);
             <div class="container">
                 <?=
                 Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs']
+                            : [],
                 ])
                 ?>
                 <div class="row">
                     <div id="content" class="col-lg-9 col-lg-push-3">
                         <div class="site-index">
                             <div class="body-content">
-                                <?= $content ?>
+                                <?php if (isset($this->blocks['content'])): ?>
+                                    <?= $this->blocks['content'] ?>
+                                <?php else: ?>
+                                    <?= $content ?>
+                                <?php endif; ?>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div id="leftbar" class="col-lg-3 col-lg-pull-9">
-                        <?php
-                            $heading='<i class="glyphicon glyphicon-cog"></i> ข้อมูลระบบ';
-                            $type=SideNav::TYPE_DEFAULT;
-                            $item = Yii::$app->requestedRoute;
-//                            var_dump($item);
-                            if (strlen($item)==0) {
+                        <?php if (isset($this->blocks['sidebar'])): ?>
+                            <?= $this->blocks['sidebar'] ?>
+                        <?php else: ?>
+                            <?php
+                            $heading = '<i class="glyphicon glyphicon-cog"></i> เมนู';
+                            $type    = SideNav::TYPE_DEFAULT;
+                            $item    = Yii::$app->requestedRoute;
+                            if (strlen($item) == 0) {
                                 $item = "site/index";
                             }
                             echo SideNav::widget([
-                               'type' => $type,
+                                'type'         => $type,
                                 'encodeLabels' => false,
-                                'heading' => $heading,
-                                'items' => [
-                                    ['label' => 'หน้าแรก', 'url' => ['/site/index'], 'active' => ($item == 'site/index')],
-                                    ['label' => 'ภูมิภาค/จังหวัด/อำเภอ/ตำบล', 'url' => ['/location'],'active' => ($item == 'location')],
+                                'heading'      => $heading,
+                                'items'        => [
+                                //['label' => 'หน้าแรก', 'url' => ['/site/index'],'active' => ($item == 'site/index')],
+                                //['label' => 'ภูมิภาค/จังหวัด/อำเภอ/ตำบล', 'url' => ['/location'],'active' => ($item == 'location')],
                                 ],
                             ]);
-                        ?>
+                            ?>
+                        <?php endif; ?>
+
                     </div> 
                 </div>
             </div>
