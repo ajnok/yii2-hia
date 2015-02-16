@@ -29,11 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
     GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel'  => $searchModel,
-        'columns' => [
+        'columns'      => [
             [
-                'class'         => 'yii\grid\SerialColumn',
-                'header'        => 'ที่',
-                'headerOptions' => ['style' => 'text-align: center; vertical-align: middle;'],
+                'class' => 'yii\grid\SerialColumn',
+                'header' => 'ที่',
+                
             ],
 //            [
 //                'class' => 'yii\grid\DataColumn',
@@ -44,46 +44,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ////                },
 //
 //            ],
-            [
-                'class'          => 'yii\grid\DataColumn',
-                'attribute'      => 'bot_code',
-                'encodeLabel'    => false,
-                'label'          => 'รหัสอ้างอิง<br />(ธปท.)',
-                'contentOptions' => ['style' => 'width: 150px;'],
-                'headerOptions'  => [
-                    'style' => 'text-align: center; vertical-align: middle;'
-                ],
-            ],
-            [
-                'class'          => 'yii\grid\DataColumn',
-                'attribute'      => 'dopa_code',
-                'encodeLabel'    => false,
-                'label'          => 'รหัสอ้างอิง<br />(กรมการปกครอง)',
-                'contentOptions' => ['style' => 'width: 150px;'],
-                'headerOptions'  => ['style' => 'text-align: center; vertical-align: middle;'],
-            ],
-//            'dopa_code',
-            [
-                'class'          => 'yii\grid\DataColumn',
-                'attribute'      => 'name',
-                'encodeLabel'    => false,
-                'contentOptions' => ['style' => 'width: 150px;'],
-                'headerOptions'  => ['style' => 'text-align: center; vertical-align: middle;'],
-            ],
-            [
-                'class'          => 'yii\grid\DataColumn',
-                'attribute'      => 'name',
-                'encodeLabel'    => false,
-                'contentOptions' => ['style' => 'width: 150px;'],
-                'headerOptions'  => ['style' => 'text-align: center; vertical-align: middle;'],
-            ],
+            'bot_code',
+            'dopa_code',
+            'name',
+            'note',
             // 'dt_create',
             // 'ts_update',
 //
-            [
-                'class'          => 'yii\grid\ActionColumn',
-                'contentOptions' => ['style' => 'width: 70px;'],
-            ],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
 //        'options'=>['style'=>'max-width: 100px;']
     ]);

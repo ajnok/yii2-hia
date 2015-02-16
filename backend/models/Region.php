@@ -2,10 +2,10 @@
 
 namespace backend\models;
 
+
 use Yii;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
-
 /**
  * This is the model class for table "region".
  *
@@ -42,7 +42,7 @@ class Region extends \yii\db\ActiveRecord
             [['name'], 'string', 'max' => 20],
             [['note'], 'string', 'max' => 100],
             [['bot_code', 'name'], 'unique', 'targetAttribute' => ['bot_code', 'name'],
-                'message'         => 'The combination of รหัสภูมิภาคอ้างอิงตามธปท. and ภาค has already been taken.'],
+                'message' => 'The combination of รหัสภูมิภาคอ้างอิงตามธปท. and ภาค has already been taken.'],
             [['name'], 'unique'],
             [['bot_code'], 'unique'],
             [['dopa_code'], 'unique'],
@@ -88,14 +88,5 @@ class Region extends \yii\db\ActiveRecord
                 'value'      => new Expression('NOW()'),
             ],
         ];
-    }
-
-    public function beforeSave($insert)
-    {
-        if (!($this->dopa_code)) {
-             $this->dopa_code = null;
-        }
-
-        return parent::beforeSave($insert);
     }
 }
